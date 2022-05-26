@@ -1,0 +1,122 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="getQuote()">
+        <div id="user-data">
+          <div class="form_title">
+            <h2>Cotizador De Envios CPS</h2>
+          </div>
+          <div class="form-group">
+            <label for="weight">Nombre</label>
+            <input 
+                type="text" 
+                id="namePackage" 
+                placeholder="Nombre/Name"
+                class="form-control"
+                name="namePackage"
+                [(ngModel)]="package.namePackage">
+          </div>
+          <div class="form-group">
+            <label for="weight">Peso</label>
+            <input 
+                type="number" 
+                id="weight" 
+                placeholder="Peso/Weight"
+                class="form-control"
+                name="weight"
+                [(ngModel)]="package.weight">
+          </div>
+          <div class="form-group">
+            <label for="ancho">Ancho</label>
+            <input 
+                type="number" 
+                id="width" 
+                class="form-control"
+                placeholder="Ancho/Width"
+                name ="width"
+                [(ngModel)]="package.width">
+          </div>
+          <div class="form-group">
+            <label for="alto">alto</label>
+            <input 
+                type="number" 
+                id="height" 
+                class="form-control"
+                placeholder="Alto/Height"
+                name="height"
+                [(ngModel)]="package.height">
+          </div>
+          <div class="form-group">
+            <label for="largo">largo</label>
+            <input 
+                type="number" 
+                id="length" 
+                class="form-control"
+                placeholder="Largo/Length"
+                name="length"
+                [(ngModel)]="package.length"
+                >
+          </div>
+          <label for="cars">Elige Pais de Origen</label>
+          <div class="form-group">
+            <select  
+              class="form-control" 
+              name="originCountry" 
+              id="originCountry"
+              [(ngModel)]="package.originCountry">
+              <option 
+                  [ngValue]="null" 
+                  [disabled]="true">
+                  Seleccione Ciudad
+              </option>
+              <option  
+                  *ngFor="let country of countries" 
+                  [ngValue]="country.id" >
+                  {{country.country_name}}
+              </option>
+            </select>
+          </div>
+          <label for="cars">Elige Pais de Destino</label>
+          <div class="form-group">
+            <select  
+                class="form-control" 
+                name="destination_country" 
+                id="destination_country"
+                 [(ngModel)]="package.destination_country" >
+              <option 
+                  [ngValue]="null" 
+                  [disabled]="true" >
+                  Seleccione Ciudad 
+              </option>
+              <option 
+                  *ngFor="let country of countries" 
+                  [ngValue]="country.id">
+                  {{country.country_name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Cotizar</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">  
+      <h2>Packages</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let package of packages">
+            <td>{{package.namePackage}}</td>
+          </tr>
+        </tbody>
+      </table> 
+    </div>
+  </div>
+</div>
