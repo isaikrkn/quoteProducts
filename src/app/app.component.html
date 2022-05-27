@@ -6,6 +6,30 @@
           <div class="form_title">
             <h2>Cotizador De Envios CPS</h2>
           </div>
+          <div *ngIf="package.user_id === '1' " class="form-group">
+            <label for="weight">Usuario Codigo Cliente</label>
+            
+            <input 
+                [disabled]="true"
+                type="text" 
+                id="user_id" 
+                placeholder="1"
+                class="form-control"
+                name="user_id"
+                [(ngModel)]="package.user_id">
+          </div>
+          <div *ngIf="package.user_id === '0' " class="form-group">
+            <label for="weight">Usuario Codigo Visitante</label>
+            
+            <input 
+                [disabled]="true"
+                type="text" 
+                id="user_id" 
+                placeholder="1"
+                class="form-control"
+                name="user_id"
+                [(ngModel)]="package.user_id">
+          </div>
           <div class="form-group">
             <label for="weight">Nombre</label>
             <input 
@@ -104,16 +128,17 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">  
-      <h2>Packages</h2>
+      <h2>Cotizaciòn Final</h2>
       <table>
         <thead>
           <tr>
-            <th>Name</th>
+            <th>Descripciòn</th>
           </tr>
         </thead>
         <tbody>
-          <tr  *ngFor="let package of packages">
-            <td>{{package.namePackage}}</td>
+          <tr>
+            <td>Total: </td>
+            <td>{{lastPackage$}}</td>
           </tr>
         </tbody>
       </table> 
